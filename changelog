@@ -1,0 +1,7 @@
+v1.0.0
+The first release
+
+v2.0.0
+-Added TOR support
+-Updated to UV3
+-More optimizations

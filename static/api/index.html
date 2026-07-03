@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gammaray</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <script src="/uv/uv.bundle.js" defer></script>
+  <script src="/uv/uv.config.js" defer></script>
+  <script src="/uv/bare.bundle.js" defer></script>
+  <script src="/uv/uv.init.js" defer></script>
+  <style>
+    :root{--primary-color:#ff5722;--primary-hover:#e64a19;--accent-color:#ffd700;--light-text:#e0e0e0;--dark-text:#2c2c2c;--danger-color:#ef5350;--danger-hover:#e53935;--glass-bg-start:rgba(30,30,45,0.4);--glass-bg-end:rgba(10,10,20,0.8);--panel-border:rgba(255,255,255,0.15);--panel-border-light:rgba(255,255,255,0.3);--panel-shadow-light:0 4px 15px rgba(0,0,0,0.3);--panel-shadow-deep:0 12px 45px rgba(0,0,0,0.6);--input-bg:rgba(15,15,25,1);--transition-speed:0.4s;--border-radius-sm:12px;--border-radius-md:24px;--border-radius-lg:60px;--glow-color:var(--primary-color);--focus-glow-color:rgba(255,87,34,0.6)}*{margin:0;padding:0;box-sizing:border-box}html{height:100%}body{font-family:'Space Grotesk',sans-serif;color:var(--light-text);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:100vh;overflow-x:hidden;background-size:400% 400%}.glass-panel{background:linear-gradient(145deg,var(--glass-bg-start),var(--glass-bg-end));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--panel-border);border-radius:var(--border-radius-md);box-shadow:var(--panel-shadow-light)}.page-header{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:15px 25px;z-index:1000;gap:15px}.header-widgets{display:flex;align-items:center;gap:12px;flex:1}.weather-time{display:flex;align-items:center;gap:15px;padding:12px 20px;background:linear-gradient(145deg,rgb(30 30 45 / .6),rgb(10 10 20 / .9));border:1px solid var(--panel-border);border-radius:var(--border-radius-lg)}.time-display{display:flex;flex-direction:column;align-items:flex-start;padding-right:15px;border-right:1px solid var(--panel-border)}.time-display .time{font-size:1.1rem;font-weight:600;color:#fff}.time-display .date{font-size:.7rem;opacity:.6;margin-top:2px}.weather-display{display:flex;flex-direction:column;align-items:flex-start}.weather-condition{font-size:.75rem;color:var(--accent-color);font-weight:500;display:flex;align-items:center;gap:5px}.weather-temp{font-size:.9rem;font-weight:600;color:#fff;margin-top:2px}.weather-details{font-size:.65rem;opacity:.6;margin-top:2px}.battery-widget{display:flex;align-items:center;gap:8px;padding:10px 15px;background:linear-gradient(145deg,rgb(30 30 45 / .6),rgb(10 10 20 / .9));border:1px solid var(--panel-border);border-radius:var(--border-radius-sm)}.battery-icon{display:flex;align-items:center;gap:3px}.battery-body{width:28px;height:14px;border:2px solid var(--light-text);border-radius:3px;padding:2px;position:relative}.battery-body::after{content:'';position:absolute;right:-5px;top:50%;transform:translateY(-50%);width:3px;height:8px;background:var(--light-text);border-radius:0 2px 2px 0}.battery-level{height:100%;border-radius:1px;transition:width 0.3s ease,background-color 0.3s ease}.battery-level.charging{background:linear-gradient(90deg,#4caf50,#8bc34a)}.battery-level.low{background:var(--danger-color)}.battery-level.medium{background:var(--accent-color)}.battery-level.high{background:#4caf50}.battery-text{font-size:.8rem;font-weight:500;color:#fff}.settings-toggle{background:linear-gradient(145deg,var(--glass-bg-start),var(--glass-bg-end));color:var(--light-text);border:1px solid var(--panel-border-light);width:45px;height:45px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:0.3s;z-index:1001;position:relative}.settings-toggle svg{width:24px;height:24px;fill:currentColor}.settings-toggle:hover{background:linear-gradient(145deg,var(--primary-color),var(--primary-hover));transform:rotate(90deg) scale(1.1);box-shadow:0 0 15px var(--glow-color)}main{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:120px 20px 0;max-width:1300px;z-index:50;position:relative}.search-container{text-align:center;padding:40px 30px;width:100%;max-width:850px;margin-bottom:20px;position:relative;z-index:100}.search-container h1{font-size:3.5rem;margin-bottom:30px;color:#fff;text-shadow:0 0 10px var(--primary-color)}.search-row{display:flex;gap:15px;align-items:center;justify-content:center;width:100%;position:relative}.chat-input{flex:1;padding:15px 25px;font-size:1.1rem;border:1px solid var(--panel-border);border-radius:var(--border-radius-lg);background:var(--input-bg);color:var(--light-text);transition:0.3s;position:relative;z-index:101}.chat-input:focus{outline:none;border-color:var(--accent-color);box-shadow:0 0 0 4px var(--focus-glow-color)}.suggestions-box{position:absolute;top:calc(100% + 8px);left:0;right:65px;background:#14141e;border:1px solid var(--panel-border-light);border-radius:15px;z-index:999999999;display:none;overflow:hidden;box-shadow:var(--panel-shadow-deep);text-align:left;max-height:300px;overflow-y:auto}.suggestions-box.visible{display:block}.suggestion-item{padding:12px 25px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:0.2s;font-size:1rem;color:var(--light-text);border-bottom:1px solid rgb(255 255 255 / .05)}.suggestion-item:hover{background:var(--primary-color);color:#fff}.suggestion-item svg{width:18px;height:18px;flex-shrink:0;fill:currentColor}.action-button{width:50px;height:50px;border-radius:50%;background:linear-gradient(45deg,var(--primary-color),var(--primary-hover));color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:0.3s;position:relative;z-index:101;flex-shrink:0}.action-button:hover{transform:scale(1.1);box-shadow:0 0 15px var(--glow-color)}#bookmarksContainer{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:10px;width:100%;max-width:1100px;margin-bottom:40px;position:relative;z-index:90}.bookmark{padding:12px 18px;color:var(--light-text);text-decoration:none;display:flex;align-items:center;gap:10px;position:relative;border-radius:var(--border-radius-md);transition:0.3s}.bookmark:hover{background:var(--primary-color);transform:translateY(-3px)}.delete-bookmark{position:absolute;top:5px;right:5px;background:var(--danger-color);border:none;border-radius:50%;width:22px;height:22px;color:#fff;cursor:pointer;opacity:0;transition:0.3s;display:flex;align-items:center;justify-content:center;font-size:14px;line-height:1}.bookmark:hover .delete-bookmark{opacity:1}.delete-bookmark:hover{background:var(--danger-hover);transform:scale(1.1)}.settings-panel-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgb(0 0 0 / .85);display:none;align-items:center;justify-content:center;z-index:20000;backdrop-filter:blur(15px);opacity:0;transition:opacity 0.3s ease}.settings-panel-overlay.visible{display:flex;opacity:1}.settings-panel-content{width:90%;max-width:500px;max-height:85vh;overflow-y:auto;background:linear-gradient(145deg,rgb(30 30 45 / .95),rgb(10 10 20 / .98));border:1px solid var(--panel-border);border-radius:var(--border-radius-md);box-shadow:var(--panel-shadow-deep);padding:0}.settings-header{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:25px 30px;background:#0f0f19;border-bottom:1px solid var(--panel-border);z-index:10}.settings-header h2{color:var(--primary-color);font-size:1.5rem;display:flex;align-items:center;gap:10px}.close-settings{background:rgb(255 255 255 / .1);border:none;color:#fff;width:35px;height:35px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}.settings-content{padding:25px 30px}.settings-section{margin-bottom:30px}.section-title{font-size:.8rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent-color);margin-bottom:15px;font-weight:600}.setting-item{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgb(255 255 255 / .05)}.setting-item:last-child{border-bottom:none}.setting-info h3{font-size:1rem;margin-bottom:2px}.setting-info p{font-size:.8rem;opacity:.6}.toggle-switch{position:relative;width:48px;height:24px;background:#333;border-radius:12px;cursor:pointer;transition:0.3s}.toggle-switch.active{background:var(--primary-color)}.toggle-switch::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;background:#fff;border-radius:50%;transition:0.3s}.toggle-switch.active::after{left:26px}.setting-select,.setting-input{background:var(--input-bg);border:1px solid var(--panel-border-light);color:#fff;padding:8px 12px;border-radius:8px;font-family:inherit}.setting-btn{background:var(--primary-color);border:none;color:#fff;padding:8px 16px;border-radius:8px;cursor:pointer;font-family:inherit;transition:0.3s}.setting-btn:hover{background:var(--primary-hover)}#newsFeedSection{width:100%;max-width:1100px;padding:20px;margin-bottom:80px;position:relative;z-index:9}.news-header{color:var(--primary-color);margin-bottom:25px;text-shadow:0 0 10px var(--primary-color)}.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}.news-card{padding:20px;text-decoration:none;color:inherit;background:rgb(255 255 255 / .03);border:1px solid var(--panel-border);border-radius:16px;transition:0.3s;background:linear-gradient(145deg,var(--glass-bg-start),var(--glass-bg-end))}.news-card:hover{border-color:var(--primary-color);transform:translateY(-5px)}.news-card h3{color:var(--primary-color);font-size:1rem;line-height:1.4;margin-bottom:10px}.news-card p{color:var(--accent-color);font-size:.85rem;line-height:1.5;margin-bottom:12px}.news-card .news-meta{font-size:.75rem;opacity:.6}.news-card .news-source{font-size:.75rem;color:var(--primary-color);font-weight:500}.load-more-container{text-align:center;margin-top:30px}.btn-show-more{background:rgb(255 87 34 / .2);border:1px solid var(--primary-color);color:#ff5722;padding:12px 30px;border-radius:30px;cursor:pointer;font-family:inherit;font-weight:600;transition:0.3s}.btn-show-more:hover{background:var(--primary-color);color:#fff;box-shadow:0 0 15px var(--primary-color)}.page-footer{position:fixed;bottom:0;width:100%;padding:10px;text-align:center;font-size:.8em;background:rgb(0 0 0 / .6);backdrop-filter:blur(10px);z-index:90}.location-input-group{display:flex;gap:10px;margin-top:10px}.location-input-group .setting-input{flex:1}.location-input-group .setting-btn{white-space:nowrap}.bookmark-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgb(0 0 0 / .85);display:none;align-items:center;justify-content:center;z-index:20001;backdrop-filter:blur(15px);opacity:0;transition:opacity 0.3s ease}.bookmark-modal-overlay.visible{display:flex;opacity:1}.bookmark-modal-content{width:90%;max-width:400px;background:linear-gradient(145deg,rgb(30 30 45 / .95),rgb(10 10 20 / .98));border:1px solid var(--panel-border);border-radius:var(--border-radius-md);box-shadow:var(--panel-shadow-deep);padding:0}.bookmark-modal-header{display:flex;justify-content:space-between;align-items:center;padding:20px 25px;background:#0f0f19;border-bottom:1px solid var(--panel-border)}.bookmark-modal-header h3{color:var(--primary-color);font-size:1.2rem;display:flex;align-items:center;gap:10px}.close-bookmark-modal{background:rgb(255 255 255 / .1);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;transition:0.3s}.close-bookmark-modal:hover{background:var(--danger-color)}.bookmark-modal-body{padding:25px}.bookmark-form-group{margin-bottom:20px}.bookmark-form-group label{display:block;margin-bottom:8px;font-size:.9rem;color:var(--accent-color);font-weight:500}.bookmark-form-group input{width:100%;padding:12px 15px;font-size:1rem;border:1px solid var(--panel-border);border-radius:8px;background:var(--input-bg);color:var(--light-text);font-family:inherit;transition:0.3s}.bookmark-form-group input:focus{outline:none;border-color:var(--primary-color);box-shadow:0 0 0 4px var(--focus-glow-color)}.bookmark-form-group input::placeholder{color:rgb(255 255 255 / .4)}.bookmark-modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:25px}.btn-cancel{background:rgb(255 255 255 / .1);border:1px solid var(--panel-border-light);color:var(--light-text);padding:10px 20px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:.95rem;transition:0.3s}.btn-cancel:hover{background:rgb(255 255 255 / .2)}.btn-save{background:var(--primary-color);border:none;color:#fff;padding:10px 20px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:.95rem;transition:0.3s}.btn-save:hover{background:var(--primary-hover);box-shadow:0 0 10px var(--primary-color)}.bookmarks-empty-message{text-align:center;opacity:.6;padding:20px;font-size:.9rem}
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="header-widgets">
+      <div class="weather-time glass-panel">
+        <div class="time-display">
+          <div class="time" id="currentTime">--:--</div>
+          <div class="date" id="currentDate">Loading...</div>
+        </div>
+        <div class="weather-display">
+          <div class="weather-condition" id="weatherCondition">Loading...</div>
+          <div class="weather-temp" id="weatherTemp">--°C / --°F</div>
+          <div class="weather-details" id="weatherDetails">--</div>
+        </div>
+      </div>
+      
+      <div class="battery-widget glass-panel" id="batteryWidget">
+        <div class="battery-icon">
+          <div class="battery-body">
+            <div class="battery-level" id="batteryLevel" style="width: 100%;"></div>
+          </div>
+        </div>
+        <div class="battery-text" id="batteryText">100%</div>
+      </div>
+    </div>
+
+    <button class="settings-toggle" id="settingsBtn" title="Settings">
+      <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <div class="search-container glass-panel">
+      <h1>Gammaray</h1>
+      <form id="searchForm" class="search-row">
+        <input type="text" name="q" class="chat-input" placeholder="Search or enter URL..." id="searchInput" autocomplete="off">
+        <button id="addBookmarkBtn" type="button" class="action-button" title="Add Bookmark">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17 3H7c-1.103 0-2 .897-2 2v16l7-4.666L19 21V5c0-1.103-.897-2-2-2z"/></svg>
+        </button>
+        <div id="suggestionsBox" class="suggestions-box"></div>
+      </form>
+      <p id="splash" style="margin-top:20px; font-size:0.9em; opacity:0.7; cursor:pointer;"></p>
+    </div>
+    <div id="bookmarksContainer"></div>
+  </main>
+
+  <section id="newsFeedSection">
+    <h2 class="news-header">Latest News</h2>
+    <div id="newsGrid" class="news-grid"></div>
+    <div class="load-more-container" id="loadMoreContainer">
+      <button class="btn-show-more" onclick="showAllNews()">Show More News</button>
+    </div>
+  </section>
+
+  <aside class="settings-panel-overlay" id="settingsPanel">
+    <div class="settings-panel-content">
+      <div class="settings-header">
+        <h2>Settings</h2>
+        <button class="close-settings" onclick="toggleSettings()">&times;</button>
+      </div>
+      <div class="settings-content">
+        
+        <div class="settings-section">
+          <div class="section-title">Network</div>
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Tor Network</h3>
+              <p>Route traffic through the Tor network (.onion supported)</p>
+            </div>
+            <div class="toggle-switch" id="torToggleSwitch"></div>
+            <input type="checkbox" id="torToggle" style="display:none">
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="section-title">General</div>
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>News Feed</h3>
+              <p>Display the Google News rss feed</p>
+            </div>
+            <div class="toggle-switch" id="newsToggleSwitch"></div>
+            <input type="checkbox" id="showNewsToggle" style="display:none" checked>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="section-title">Search</div>
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Search Engine</h3>
+            </div>
+            <select id="searchEngine" class="setting-select">
+              <option value="https://search.brave.com/search" selected>Brave</option>
+              <option value="https://duckduckgo.com/">DuckDuckGo</option>
+              <option value="https://www.google.com/search">Google</option>
+              <option value="https://nortonsafe.search.ask.com/web">Norton</option>
+              <option value="https://www.bing.com/search">Bing</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="section-title">Location</div>
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Weather Location</h3>
+              <p id="locationStatus">Current: Default (Nebraska)</p>
+            </div>
+          </div>
+          <div class="setting-item" style="flex-direction:column; align-items:flex-start; gap:10px;">
+            <div class="setting-info">
+              <h3>Manual Location</h3>
+              <p>Enter latitude and longitude</p>
+            </div>
+            <div class="location-input-group">
+              <input type="number" id="manualLat" class="setting-input" step="0.0001" placeholder="Latitude" style="width:120px;">
+              <input type="number" id="manualLon" class="setting-input" step="0.0001" placeholder="Longitude" style="width:120px;">
+              <button onclick="setManualLocation()" class="setting-btn">Set</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </aside>
+
+  <div class="bookmark-modal-overlay" id="bookmarkModal">
+    <div class="bookmark-modal-content">
+      <div class="bookmark-modal-header">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17 3H7c-1.103 0-2 .897-2 2v16l7-4.666L19 21V5c0-1.103-.897-2-2-2z"/></svg>
+          Add Bookmark
+        </h3>
+        <button class="close-bookmark-modal" onclick="closeBookmarkModal()">&times;</button>
+      </div>
+      <div class="bookmark-modal-body">
+        <form id="bookmarkForm" onsubmit="saveBookmark(event)">
+          <div class="bookmark-form-group">
+            <label for="bookmarkName">Name</label>
+            <input type="text" id="bookmarkName" placeholder="Enter bookmark name..." required>
+          </div>
+          <div class="bookmark-form-group">
+            <label for="bookmarkUrl">URL</label>
+            <input type="url" id="bookmarkUrl" placeholder="https://example.com" required>
+          </div>
+          <div class="bookmark-modal-actions">
+            <button type="button" class="btn-cancel" onclick="closeBookmarkModal()">Cancel</button>
+            <button type="submit" class="btn-save">Save Bookmark</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <p>&copy; 2026 Lorem Group U.S. | DONATE! BTC: bc1q9wz5znx99wkc5lcwzrhvmq2a53hruzkmgvsepl</p>
+  </footer>
+
+  <script>
+  function uvEncode(str){if(!str)return str;return encodeURIComponent(str.split('').map((char,ind)=>ind%2?String.fromCharCode(char.charCodeAt()^2):char).join(''))}
+function safeGetItem(key,defaultVal=null){try{const val=localStorage.getItem(key);return val!==null?val:defaultVal}catch(e){console.warn('localStorage get failed:',key,e);return defaultVal}}
+function safeSetItem(key,value){try{localStorage.setItem(key,value);return!0}catch(e){console.warn('localStorage set failed:',key,e);alert('Storage full! Clear some data or disable private browsing.');return!1}}
+function safeParse(key,defaultVal=[]){try{const val=localStorage.getItem(key);return val?JSON.parse(val):defaultVal}catch(e){console.warn('localStorage parse failed:',key,e);return defaultVal}}
+let newsData=[];let suggestionTimeout;const DEFAULT_LAT=41.2034;const DEFAULT_LON=-96.1835;document.addEventListener('DOMContentLoaded',async()=>{if('serviceWorker' in navigator){try{await navigator.serviceWorker.register('/sw.js',{scope:'/service/', updateViaCache: 'none'});console.log('UV Service Worker Registered')}catch(err){console.error('SW registration failed:',err)}}
+loadAllSettings();updateTime();setInterval(updateTime,1000);fetchWeather();renderBookmarks();initSplashText();setupEventListeners();setupSuggestions();fetchNews();initBattery()});function toggleSettings(){document.getElementById('settingsPanel').classList.toggle('visible')}
+function setupEventListeners(){const settingsBtn=document.getElementById('settingsBtn');const newsToggleSwitch=document.getElementById('newsToggleSwitch');const newsCheckbox=document.getElementById('showNewsToggle');const torToggleSwitch=document.getElementById('torToggleSwitch');const torCheckbox=document.getElementById('torToggle');settingsBtn.addEventListener('click',toggleSettings);newsToggleSwitch.addEventListener('click',()=>{newsCheckbox.checked=!newsCheckbox.checked;newsToggleSwitch.classList.toggle('active',newsCheckbox.checked);handleNewsToggle();saveSettings()});torToggleSwitch.addEventListener('click',()=>{torCheckbox.checked=!torCheckbox.checked;torToggleSwitch.classList.toggle('active',torCheckbox.checked);document.cookie="ubx-tor-enabled="+torCheckbox.checked+"; path=/; max-age=31536000";if(confirm("Tor setting changed. Reload to apply?")){window.location.reload()}});document.getElementById('searchForm').addEventListener('submit',handleSearch);document.getElementById('searchEngine').addEventListener('change',()=>{saveSettings()});document.getElementById('addBookmarkBtn').addEventListener('click',openBookmarkModal);document.getElementById('bookmarkModal').addEventListener('click',(e)=>{if(e.target.id==='bookmarkModal'){closeBookmarkModal()}})}
+function handleSearch(event){event.preventDefault();const input=document.getElementById('searchInput');const query=input.value.trim();if(!query)return;let url;if(/^((https?:\/\/)?(\w+(\.\w+)+)|(localhost)|(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}))(:[0-9]+)?(\/.*)?$/i.test(query)){url=query.startsWith('http')?query:'https://'+query}else{const engine=document.getElementById('searchEngine').value;url=`${engine}${engine.includes('?') ? '&q=' : '?q='}${encodeURIComponent(query)}`}
+window.location.href="/service/"+uvEncode(url)}
+function getWeatherDescription(code){const codes={0:'Clear Sky',1:'Mainly Clear',2:'Partly Cloudy',3:'Overcast',45:'Fog',48:'Rime Fog',51:'Light Drizzle',53:'Moderate Drizzle',55:'Dense Drizzle',61:'Slight Rain',63:'Moderate Rain',65:'Heavy Rain',71:'Slight Snow',73:'Moderate Snow',75:'Heavy Snow',80:'Rain Showers',81:'Rain Showers',82:'Violent Showers',85:'Snow Showers',86:'Snow Showers',95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};return codes[code]||'Unknown'}
+async function fetchNews(){const rssUrl='https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en';const api=`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;try{const res=await fetch(api);const data=await res.json();if(data.status==='ok'){newsData=data.items;renderNews(newsData.slice(0,6))}}catch(e){console.error(e)}}
+function renderNews(items){const grid=document.getElementById('newsGrid');grid.innerHTML='';items.forEach(item=>{const card=document.createElement('a');card.href="/service/"+uvEncode(item.link);card.className='news-card glass-panel';card.target='_self';let source='News';if(item.title&&item.title.includes('-')){const parts=item.title.split(' - ');if(parts.length>1){source=parts[parts.length-1].trim()}}
+const description=item.description?item.description.replace(/<[^>]*>?/gm,'').substring(0,150):'';card.innerHTML=`
+          <h3>${item.title}</h3>
+          <p>${description}...</p>
+          <div class="news-source">${source}</div>
+          <div class="news-meta">${new Date(item.pubDate).toLocaleDateString()}</div>
+        `;grid.appendChild(card)})}
+function showAllNews(){const grid=document.getElementById('newsGrid');grid.innerHTML='';renderNews(newsData);document.getElementById('loadMoreContainer').style.display='none'}
+function updateTime(){const now=new Date();const timeStr=now.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});document.getElementById('currentTime').innerText=timeStr;const dateStr=now.toLocaleDateString([],{weekday:'short',month:'short',day:'numeric'});document.getElementById('currentDate').innerText=dateStr}
+async function fetchWeather(){const lat=safeGetItem('weatherLat',null);const lon=safeGetItem('weatherLon',null);const parsedLat=lat?parseFloat(lat):DEFAULT_LAT;const parsedLon=lon?parseFloat(lon):DEFAULT_LON;const conditionEl=document.getElementById('weatherCondition');const tempEl=document.getElementById('weatherTemp');const detailsEl=document.getElementById('weatherDetails');const locationName=safeGetItem('weatherLocationName');const statusEl=document.getElementById('locationStatus');if(locationName){statusEl.innerText=`Current: ${locationName}`}else{statusEl.innerText='Current: Default (Nebraska)'}
+const url=`https://api.open-meteo.com/v1/forecast?latitude=${parsedLat}&longitude=${parsedLon}&current_weather=true`;try{const response=await fetch(url);if(!response.ok)throw new Error('Weather data not available.');const data=await response.json();const{temperature,weathercode,windspeed,winddirection}=data.current_weather;const tempF=(temperature*9/5)+32;const weatherText=getWeatherDescription(weathercode);const windDirections=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];const windDirName=windDirections[Math.round(winddirection/22.5)%16];conditionEl.innerHTML=`<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg> ${weatherText}`;tempEl.innerText=`${temperature.toFixed(0)}°C / ${tempF.toFixed(0)}°F`;detailsEl.innerText=`Wind: ${windspeed}km/h ${windDirName}`}catch(error){console.error('Error fetching weather:',error);conditionEl.innerText='Weather unavailable';tempEl.innerText='--°C / --°F';detailsEl.innerText='--'}}
+function setManualLocation(){const lat=parseFloat(document.getElementById('manualLat').value);const lon=parseFloat(document.getElementById('manualLon').value);if(isNaN(lat)||isNaN(lon)){alert('Please enter valid latitude and longitude values');return}
+if(lat<-90||lat>90){alert('Latitude must be between -90 and 90');return}
+if(lon<-180||lon>180){alert('Longitude must be between -180 and 180');return}
+if(safeSetItem('weatherLat',lat)){safeSetItem('weatherLon',lon);safeSetItem('weatherLocationName',`Custom (${lat}, ${lon})`);document.getElementById('locationStatus').innerText=`Current: Custom (${lat}, ${lon})`;fetchWeather()}}
+function initSplashText(){const splashes=["Gammaray is back bitch."];let i=0;const el=document.getElementById('splash');function updateSplash(){el.innerText=splashes[i++%splashes.length]}
+updateSplash();let intervalId=setInterval(updateSplash,3000);el.addEventListener('click',function(){updateSplash();clearInterval(intervalId);intervalId=setInterval(updateSplash,3000)})}
+function saveSettings(){const settings={engine:document.getElementById('searchEngine').value,showNews:document.getElementById('showNewsToggle').checked};safeSetItem('UBX_Settings',JSON.stringify(settings))}
+function loadAllSettings(){const saved=safeParse('UBX_Settings');if(saved){if(saved.engine){document.getElementById('searchEngine').value=saved.engine}
+const showNewsValue=saved.showNews!==undefined?saved.showNews:!0;document.getElementById('showNewsToggle').checked=showNewsValue;document.getElementById('newsToggleSwitch').classList.toggle('active',showNewsValue);handleNewsToggle()}
+const torEnabled=document.cookie.includes('ubx-tor-enabled=true');document.getElementById('torToggle').checked=torEnabled;document.getElementById('torToggleSwitch').classList.toggle('active',torEnabled)}
+function handleNewsToggle(){const show=document.getElementById('showNewsToggle').checked;document.getElementById('newsFeedSection').style.display=show?'block':'none'}
+function renderBookmarks(){const bookmarks=safeParse('SurfBookmarks');const container=document.getElementById('bookmarksContainer');container.innerHTML='';if(bookmarks.length===0){container.innerHTML='<p class="bookmarks-empty-message"></p>';return}
+bookmarks.forEach((bm,index)=>{const a=document.createElement('a');a.href="/service/"+uvEncode(bm.url);a.className='bookmark glass-panel';a.innerHTML=`<span>${bm.name}</span>`;const deleteBtn=document.createElement('button');deleteBtn.className='delete-bookmark';deleteBtn.innerHTML='&times;';deleteBtn.title='Delete Bookmark';deleteBtn.type='button';deleteBtn.addEventListener('click',(e)=>{e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();if(confirm(`Delete "${bm.name}"?`)){bookmarks.splice(index,1);if(safeSetItem('SurfBookmarks',JSON.stringify(bookmarks))){renderBookmarks()}}},!0);a.appendChild(deleteBtn);container.appendChild(a)})}
+function openBookmarkModal(){const modal=document.getElementById('bookmarkModal');const nameInput=document.getElementById('bookmarkName');const urlInput=document.getElementById('bookmarkUrl');nameInput.value='';urlInput.value='';modal.classList.add('visible');setTimeout(()=>{nameInput.focus()},100)}
+function closeBookmarkModal(){const modal=document.getElementById('bookmarkModal');modal.classList.remove('visible')}
+function saveBookmark(event){event.preventDefault();const name=document.getElementById('bookmarkName').value.trim();const url=document.getElementById('bookmarkUrl').value.trim();if(!name||!url){return}
+let finalUrl=url;if(!url.startsWith('http://')&&!url.startsWith('https://')){finalUrl='https://'+url}
+const bookmarks=safeParse('SurfBookmarks');bookmarks.push({name,url:finalUrl});if(safeSetItem('SurfBookmarks',JSON.stringify(bookmarks))){closeBookmarkModal();renderBookmarks()}}
+function setupSuggestions(){
+  const input=document.getElementById('searchInput');
+  const box=document.getElementById('suggestionsBox');
+  let debounceTimer;
+  window.googleAutocompleteCallback=function(data){
+    const suggestions=data[1];
+    box.innerHTML='';
+    if(suggestions.length>0){
+      box.classList.add('visible');
+      suggestions.forEach(item=>{
+        const div=document.createElement('div');
+        div.className='suggestion-item';
+        div.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"/></svg> ${item}`;
+        div.addEventListener('click',()=>{
+          input.value=item;
+          box.classList.remove('visible');
+          const form=document.getElementById('searchForm');
+          if(typeof form.requestSubmit === 'function'){
+            form.requestSubmit();
+          }else{
+            form.dispatchEvent(new Event('submit',{cancelable:true}));
+          }
+        });
+        box.appendChild(div)
+      })
+    }else{
+      box.classList.remove('visible')
+    }
+  };
+  input.addEventListener('input',(e)=>{
+    clearTimeout(debounceTimer);
+    const q=e.target.value.trim();
+    if(q.length<1){
+      box.classList.remove('visible');
+      return
+    }
+    debounceTimer=setTimeout(()=>{
+      const existingScript=document.querySelector('script[src*="suggestqueries.google.com"]');
+      if(existingScript)existingScript.remove();
+      const script=document.createElement('script');
+      script.src=`https://suggestqueries.google.com/complete/search?client=chrome&q=${encodeURIComponent(q)}&callback=googleAutocompleteCallback`;
+      document.body.appendChild(script);
+      script.onload=()=>script.remove()
+    },200)
+  });
+  document.addEventListener('click',(e)=>{
+    if(!input.contains(e.target)&&!box.contains(e.target)){
+      box.classList.remove('visible')
+    }
+  })
+}
+function initBattery(){const batteryWidget=document.getElementById('batteryWidget');if('getBattery' in navigator){navigator.getBattery().then(battery=>{updateBatteryDisplay(battery);battery.addEventListener('levelchange',()=>updateBatteryDisplay(battery));battery.addEventListener('chargingchange',()=>updateBatteryDisplay(battery))}).catch(()=>{updateBatteryDisplayMock()})}else{updateBatteryDisplayMock()}}
+function updateBatteryDisplayMock(){const widget=document.getElementById('batteryWidget');const levelEl=widget.querySelector('.battery-level');const textEl=widget.querySelector('.battery-text');if(levelEl&&textEl){levelEl.style.width='100%';levelEl.classList.remove('low','medium','high','charging');levelEl.classList.add('high');textEl.textContent='100%'}}
+function updateBatteryDisplay(battery){const widget=document.getElementById('batteryWidget');const levelEl=widget.querySelector('.battery-level');const textEl=widget.querySelector('.battery-text');const level=Math.round(battery.level*100);levelEl.style.width=level+'%';textEl.innerText=level+'%';levelEl.classList.remove('low','medium','high','charging');if(battery.charging){levelEl.classList.add('charging')}else if(level<=20){levelEl.classList.add('low')}else if(level<=50){levelEl.classList.add('medium')}else{levelEl.classList.add('high')}}
+  </script>
+</body>
+</html>

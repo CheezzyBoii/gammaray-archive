@@ -1,0 +1,37 @@
+{
+  "name": "gammaray",
+  "version": "2.0.0",
+  "type": "module",
+  "engines": {
+    "npm": ">=10.0.0",
+    "node": "24.x"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "format": "pnpm biome format --write .",
+    "precommit": "pnpm run format && pnpm biome check --write .",
+    "lint": "biome lint --write ."
+  },
+  "author": "Lorem Group US",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "@mercuryworkshop/bare-as-module3": "^2.2.5",
+    "@mercuryworkshop/bare-mux": "^2.1.8",
+    "@titaniumnetwork-dev/ultraviolet": "^3.2.10",
+    "@tomphttp/bare-server-node": "^2.0.6",
+    "chalk": "^5.4.1",
+    "compression": "^1.8.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.0.1",
+    "express-basic-auth": "^1.2.1",
+    "mime": "^4.1.0",
+    "node-fetch": "^3.3.2",
+    "socks-proxy-agent": "^8.0.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.8"
+  },
+  "packageManager": "pnpm@10.0.0"
+}

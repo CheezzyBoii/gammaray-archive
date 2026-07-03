@@ -1,0 +1,56 @@
+HEY!!!
+Gammaray SUPPORTS VPS BITCH!!!
+YOU NEED TO INSTALL SOME SHIT!!! 
+
+NORMAL SHIT FOR EVERYONE
+CADDY!!! USE FUCKING CADDY 
+https://caddyserver.com/
+I FUCKING HATE CADDY
+
+HERES A EXAMPLE CADDY FILE BITCH
+
+
+{
+    email yours@fuckland.ass
+    on_demand_tls {
+        ask http://localhost:8080/check
+    }
+}
+
+# Fixes the SSL log errors for raw IP addresses
+:80 {
+    @staticIP {
+        header_regexp Host Host ^(172\.26\.6\.234|3\.12\.220\.215|localhost)$
+    }
+    handle @staticIP {
+        abort
+    }
+    reverse_proxy localhost:8080
+}
+
+# Main HTTPS Block for all domains
+:443 {
+    tls {
+        on_demand
+    }
+
+    reverse_proxy localhost:8080 {
+        flush_interval -1
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+
+        transport http {
+            keepalive off
+        }
+    }
+}
+
+
+
+TOR SHIT
+sudo apt update
+sudo apt install tor -y
+sudo systemctl enable tor
+sudo systemctl start tor
